@@ -28,10 +28,20 @@ if($hitung){
   $id = $data['id'];
   $nama = $data['nama'];
 
-  //pembuatan session
+  if($_POST['ingat'] == "yes"){
+    //pembuatan cookie
+    setcookie("cid",$id,time() + (60*60*24*3), "/");
+    setcookie("cnama",$nama,time() + (60*60*24*3), "/");
+    setcookie("cemail",$email,time() + (60*60*24*3), "/");
+
+  }else{
+     //pembuatan session
   $_SESSION['sid'] = $id;
-  $_SESSION['nama'] = $nama;
-  $_SESSION['email'] = $email;
+  $_SESSION['snama'] = $nama;
+  $_SESSION['semail'] = $email;
+
+  }
+
 
   // update last log
   $qry_update = "UPDATE users SET last_log='now()' WHERE id='$id'";
@@ -99,7 +109,7 @@ if($hitung){
         <div class="row">
           <div class="col-8">
             <div class="icheck-primary">
-              <input type="checkbox" id="remember">
+              <input type="checkbox" id="remember" name="ingat" value="yes">
               <label for="remember">
                 Remember Me
               </label>

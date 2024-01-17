@@ -14,7 +14,7 @@
           <img src="dist/img/avatar2.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Novira</a>
+          <a href="#" class="d-block"><?php echo $l_nama ?></a>
         </div>
       </div>
 
@@ -57,18 +57,43 @@
             <a href="../widgets.html" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Mahasiswa
+                Pendaftaran
                 
               </p>
             </a>
           </li>
+
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
+            <a href="../widgets.html" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
               <p>
-                Jurusan 
-                <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">6</span>
+                Tes seleksi
+                
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="../widgets.html" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Pendaftaran ulang
+                
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="../widgets.html" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Pembagian kelas
+                
+              </p>
+            </a>
+          </li>
+          
+          
               </p>
             </a>
             
