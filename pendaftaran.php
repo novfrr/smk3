@@ -64,9 +64,15 @@ include_once ("cek_login.php")
                   <thead>
                   <tr>
                     <th>No</th>
-                    <th>Kode</th>
-                    <th>Jurusan</th>
-                    <th>Aksi</th>
+                    <th>Nama</th>
+                    <th>Jenis kelamin</th>
+                    <th>No.induk sekolah</th>
+                    <th>Nisn</th>
+                    <th>No.induk kependudukan</th>
+                    <th>Tempat lahir</th>
+                    <th>Tanggal lahir</th>
+                    <th>Agama</th>
+                    <th>Kelas/tingkat</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -86,7 +92,15 @@ include_once ("cek_login.php")
                   <tr>
                     <td><?php echo $nomor++ ?></td>
                     <td><?php echo $data['kode'] ?></td>
-                    <td><?php echo $data['jurusan'] ?></td>
+                    <td><?php echo $data['nama'] ?></td>
+                    <td><?php echo $data['jeniskelamin'] ?></td>
+                    <td><?php echo $data['no.induksekolah'] ?></td>
+                    <td><?php echo $data['nisn'] ?></td>
+                    <td><?php echo $data['no.induk kependudukan'] ?></td>
+                    <td><?php echo $data['tempatlahir'] ?></td>
+                    <td><?php echo $data['tanggallahir'] ?></td>
+                    <td><?php echo $data['agama'] ?></td>
+                    <td><?php echo $data['kelas/tingkat'] ?></td>
                     <td>4</td>
                   </tr>
                   <?php
@@ -96,9 +110,16 @@ include_once ("cek_login.php")
                   <tfoot>
                   <tr>
                     <th>No</th>
-                    <th>Kode Jurusan</th>
-                    <th>Jurusan</th>
-                    <th>Action</th>
+                    <th>Nama</th>
+                    <th>Jenis kelammin</th>
+                    <th>No.induk sekolah</th>
+                    <th>Nisn</th>
+                    <th>No.induk kependudukan</th>
+                    <th>Tempat lahir</th>
+                    <th>Tanggal lahir</th>
+                    <th>Agama</th>
+                    <th>Kelas/tingkat</th>
+                    
                   </tr>
                   </tfoot>
                 </table>
