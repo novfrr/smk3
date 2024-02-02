@@ -12,8 +12,6 @@ include_once ("cek_login.php")
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-  <link rel="stylesheet" href="css/bootstrap.css">
-  <link rel="stylesheet" href="css/all.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
@@ -40,7 +38,7 @@ include_once ("cek_login.php")
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Data Pendaftaran</h1>
+            <h1>Data Pembagian Kelas</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -65,23 +63,17 @@ include_once ("cek_login.php")
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>No</th>
-                    <th>Kode Pendaftaran</th>
-                    <th>Nama</th>
-                    <th>Jenis kelamin</th>
-                    <th>Nomor Induk Sekolah</th>
-                    <th>Nisn</th>
-                    <th>Nomor Induk Kependudukan</th>
-                    <th>Tempat lahir</th>
-                    <th>Tanggal lahir</th>
-                    <th>Agama</th>
+                    <th>Id</th>
+                    <th>Kode Kelas</th>
+                    <th>Nip</th>
+                    <th>Nis</th>
                     <th>Action</th>
                   </tr>
                   </thead>
                   <div class="container">
     <div class="row">
         <div class="col-md-12 m-auto mt-3">
-          <a class="btn btn-outline-secondary mb-1" href = "tambahsiswa.php" ><i class="fa-solid fa-user-plus"></i> Tambah Data </a>
+          <a class="btn btn-outline-secondary mb-1" href = "pembagiankelas.php" ><i class="fa-solid fa-user-plus"></i> Tambah Data </a>
                   <tbody>
                   <?php
                     //1. membuat koneksi
@@ -98,37 +90,10 @@ include_once ("cek_login.php")
                   ?>
                   <tr>
                     <td><?php echo $nomor++ ?></td>
+                    <td><?php echo $data['no'] ?></td>
                     <td><?php echo $data['kd_pendaftaran'] ?></td>
-                    <td><?php echo $data['nama'] ?></td>
-                    <td><?php echo $data['jk'] ?></td>
-                    <td><?php echo $data['noinduksekolah'] ?></td>
                     <td><?php echo $data['nisn'] ?></td>
-                    <td><?php echo $data['noindukkependuduk'] ?></td>
-                    <td><?php echo $data['tempatlahir'] ?></td>
-                    <td><?php echo $data['tanggallahir'] ?></td>
-                    <td><?php echo $data['agama'] ?></td>
-                    <td>
-                      <a href="proses_edit.php?id=<?php echo $data['id'] ?>" class="btn btn-outline-secondary"><i class="fa-solid fa-pencil"></i></a>
-                      <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#hapus<?php echo $data['id'] ?>"><i class="fa fa-trash"></i></button>
-                      <!-- Modal -->
-                      <div class="modal fade" id="hapus<?php echo $data['id'] ?>" tabindex="-1" aria-labelledby="hapus<?php echo $data['id'] ?>" aria-hidden="true">
-                      <div class="modal-dialog">
-                      <div class="modal-content">
-                      <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="exampleModalLabel"><b>Warning</b><i class="fa-solid fa-circle-exclamation"></i></h1>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        Apakah Kamu Yakin Ingin Menghapus Data Mahasiswa Dengan Nama <b><?php echo $data['nama'] ?> </b>?
-                      </div>
-                      <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                      <a href="proses_hapus.php?id=<?php echo $data['id'] ?>" class="btn btn-primary">Ya</a>
-                      </div>
-                      </div>
-                      </div>
-                      </div>
-                    </td>
+                    <td>4</td>
                   </tr>
                   <?php
                   }
@@ -136,16 +101,10 @@ include_once ("cek_login.php")
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th>No</th>
-                    <th>Kode Pendaftaran</th>
-                    <th>Nama</th>
-                    <th>Jenis kelammin</th>
-                    <th>Nomor Induk sekolah</th>
-                    <th>Nisn</th>
-                    <th>Nomor Induk kependudukan</th>
-                    <th>Tempat lahir</th>
-                    <th>Tanggal lahir</th>
-                    <th>Agama</th>
+                    <th>Id</th>
+                    <th>Kode Kelas</th>
+                    <th>Nip</th>
+                    <th>Nis</th>
                     <th>Action</th>
                   </tr>
                   </tfoot>
@@ -215,7 +174,5 @@ include_once ("cek_login.php")
 </script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js/all.js"></script>
 </body>
 </html>
