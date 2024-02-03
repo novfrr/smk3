@@ -1,8 +1,8 @@
 <?php
-// 1. membuat koneksi
+// 1.Membuat koneksi
 include_once("koneksi.php");
 
-//2. mengambil seluruh nilai input dan dimasukkan ke variabel
+// 2.Mengambil seluruh nilai input dan dimasukan ke variabel
 $nomor  = $_POST['nomor'];
 $kd_pendaftaran  = $_POST['kd_pendaftaran'];
 $nama  = $_POST['nama'];
@@ -14,14 +14,14 @@ $tempatlahir = $_POST['tempatlahir'];
 $tanggallahir  = $_POST['tanggallahir'];
 $agama  = $_POST['agama'];
 
-//3. membuat query INSERT
-$qry = "UPDATE pendaftaran SET kd_pendaftaran='$kd_pendaftaran', nama='$nama',
-jk='$jk', noinduksekolah='$nis', nisn='$nisn', noindukpenduduk='$nik', tempatlahir='$tempatlahir', tanggallahir='$tanggallahir', agama='$agama' WHERE nomor='$nomor'";
+// 3.membuat query INSERT
+$qry ="INSERT INTO pendaftaran(nomor,kd_pendaftaran,nama,jk,noinduksekolah,nisn,noindukkependuduk,tempatlahir,tanggallahir,agama) VALUES 
+('$nomor','$kd_pendaftaran','$nama','$jk','$nis','$nisn','$nik','$tempatlahir', '$tanggallahir', '$agama')";
 
-//4. menjalankan query
+// 4. Menjalankan query
 $simpan = mysqli_query($con,$qry);
 
-//5. alihkan ke halaman index.php
+// 5. alihkan ke halaman index.php
 ?>
 <script>
     document.location="pendaftaran.php";

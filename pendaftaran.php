@@ -6,7 +6,7 @@ include_once ("cek_login.php")
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Blank Page</title>
+  <title>Pendaftaran</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -44,7 +44,7 @@ include_once ("cek_login.php")
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="index.php">Home</a></li>
               <li class="breadcrumb-item active">Blank Page</li>
             </ol>
           </div>
@@ -69,19 +69,15 @@ include_once ("cek_login.php")
                     <th>Kode Pendaftaran</th>
                     <th>Nama</th>
                     <th>Jenis kelamin</th>
-                    <th>Nomor Induk Sekolah</th>
                     <th>Nisn</th>
-                    <th>Nomor Induk Kependudukan</th>
-                    <th>Tempat lahir</th>
-                    <th>Tanggal lahir</th>
-                    <th>Agama</th>
+                    <th>Detail</th>
                     <th>Action</th>
                   </tr>
                   </thead>
                   <div class="container">
     <div class="row">
         <div class="col-md-12 m-auto mt-3">
-          <a class="btn btn-outline-secondary mb-1" href = "tambahsiswa.php" ><i class="fa-solid fa-user-plus"></i> Tambah Data </a>
+          <a class="btn btn-outline-secondary mb-1" href ="tambahsiswa.php" ><i class="fa-solid fa-user-plus"></i> Tambah Data </a>
                   <tbody>
                   <?php
                     //1. membuat koneksi
@@ -101,17 +97,76 @@ include_once ("cek_login.php")
                     <td><?php echo $data['kd_pendaftaran'] ?></td>
                     <td><?php echo $data['nama'] ?></td>
                     <td><?php echo $data['jk'] ?></td>
-                    <td><?php echo $data['noinduksekolah'] ?></td>
                     <td><?php echo $data['nisn'] ?></td>
-                    <td><?php echo $data['noindukkependuduk'] ?></td>
-                    <td><?php echo $data['tempatlahir'] ?></td>
-                    <td><?php echo $data['tanggallahir'] ?></td>
-                    <td><?php echo $data['agama'] ?></td>
+                    <td><button type="button" class="btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $data['nomor'] ?>">Lihat</td>
+      <!-- Modal -->
+            <div class="modal fade modal-lg" id="exampleModal<?php echo $data['nomor'] ?>" tabindex="-1" aria-labelledby="#exampleModal" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Data <?php echo $data['nama'] ?></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                  <div class="mb-3">
+                    <label for="exampleInputEmail" class="form-label" ><b>Kode Pendaftaran</b></label>
+                    <br>
+                    <span class="fs-3"><?php echo $data['kd_pendaftaran']?></span>
+                    </div>
+                  <hr>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail" class="form-label" ><b>Nama</b></label>
+                    <br>
+                    <span class="fs-3"><?php echo $data['nama']?></span>
+                    </div>
+                    <hr>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail" class="form-label" ><b>Jenis Kelamin</b></label>
+                    <br>
+                    <span class="fs-3"><?php echo $data['jk']?></span>
+                    </div>
+                    <hr>
+                    <div class="mb-3">
+                    <label for="exampleInputEmail" class="form-label" ><b>NIS</b></label>
+                    <br>
+                    <span class="fs-3"><?php echo $data['noinduksekolah']?></span>
+                    </div>
+                    <hr>
+                    <div class="mb-3">
+                    <label for="exampleInputEmail" class="form-label" ><b>Nisn</b></label>
+                    <br>
+                    <span class="fs-3"><?php echo $data['nisn']?></span>
+                    </div>
+                    <hr>
+                    <div class="mb-3">
+                    <label for="exampleInputEmail" class="form-label" ><b>NIK</b></label>
+                    <br>
+                    <span class="fs-3"><?php echo $data['agama']?></span>
+                    </div>
+                    <hr>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail" class="form-label" ><b>Tempat</b></label>
+                    <br>
+                    <span class="fs-3"><?php echo $data['tanggallahir']?></span>
+                    </div>
+                    <hr>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail" class="form-label" ><b>Agama</b></label>
+                    <br>
+                    <span class="fs-3"><?php echo $data['agama']?></span>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
                     <td>
-                      <a href="proses_edit.php?id=<?php echo $data['id'] ?>" class="btn btn-outline-secondary"><i class="fa-solid fa-pencil"></i></a>
-                      <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#hapus<?php echo $data['id'] ?>"><i class="fa fa-trash"></i></button>
+                      <a href="siswa_edit.php?nomor=<?php echo $data['nomor'] ?>" class="btn btn-outline-secondary"><i class="fa-solid fa-pencil"></i></a>
+                      <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#hapus<?php echo $data['nomor'] ?>"><i class="fa fa-trash"></i></button>
                       <!-- Modal -->
-                      <div class="modal fade" id="hapus<?php echo $data['id'] ?>" tabindex="-1" aria-labelledby="hapus<?php echo $data['id'] ?>" aria-hidden="true">
+                      <div class="modal fade" id="hapus<?php echo $data['nomor'] ?>" tabindex="-1" aria-labelledby="hapus<?php echo $data['nomor'] ?>" aria-hidden="true">
                       <div class="modal-dialog">
                       <div class="modal-content">
                       <div class="modal-header">
@@ -119,11 +174,11 @@ include_once ("cek_login.php")
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body">
-                        Apakah Kamu Yakin Ingin Menghapus Data Mahasiswa Dengan Nama <b><?php echo $data['nama'] ?> </b>?
+                        Apakah Kamu Yakin Ingin Menghapus Data Siswa Dengan Nama <b><?php echo $data['nama'] ?> </b>?
                       </div>
                       <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                      <a href="proses_hapus.php?id=<?php echo $data['id'] ?>" class="btn btn-primary">Ya</a>
+                      <a href="proseshapus.php?nomor=<?php echo $data['nomor'] ?>" class="btn btn-primary">Ya</a>
                       </div>
                       </div>
                       </div>
@@ -140,12 +195,8 @@ include_once ("cek_login.php")
                     <th>Kode Pendaftaran</th>
                     <th>Nama</th>
                     <th>Jenis kelammin</th>
-                    <th>Nomor Induk sekolah</th>
                     <th>Nisn</th>
-                    <th>Nomor Induk kependudukan</th>
-                    <th>Tempat lahir</th>
-                    <th>Tanggal lahir</th>
-                    <th>Agama</th>
+                    <th> Detail</th>
                     <th>Action</th>
                   </tr>
                   </tfoot>
@@ -180,6 +231,7 @@ include_once ("cek_login.php")
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- DataTables  & Plugins -->
 <script src="plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -193,9 +245,11 @@ include_once ("cek_login.php")
 <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- bootsrap JS -->
+<script scr="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
-!-- Page specific script -->
+<!-- Page specific script -->
 <script>
   $(function () {
     $("#example1").DataTable({

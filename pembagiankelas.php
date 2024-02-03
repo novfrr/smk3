@@ -6,12 +6,14 @@ include_once ("cek_login.php")
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Blank Page</title>
+  <title>SMKN3 BANDA ACEH</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/all.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
@@ -63,7 +65,7 @@ include_once ("cek_login.php")
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Id</th>
+                    <th>nomor</th>
                     <th>Kode Kelas</th>
                     <th>Nip</th>
                     <th>Nis</th>
@@ -73,14 +75,14 @@ include_once ("cek_login.php")
                   <div class="container">
     <div class="row">
         <div class="col-md-12 m-auto mt-3">
-          <a class="btn btn-outline-secondary mb-1" href = "pembagiankelas.php" ><i class="fa-solid fa-user-plus"></i> Tambah Data </a>
+          <a class="btn btn-outline-secondary mb-1" href = "tambah_k.php" ><i class="fa-solid fa-user-plus"></i> Tambah Data </a>
                   <tbody>
                   <?php
                     //1. membuat koneksi
                     include_once("koneksi.php");
 
                     //2. membuat query utk menampilkan seluruh data 
-                    $qry = "SELECT * FROM pendaftaran";
+                    $qry = "SELECT * FROM pembagiankelas";
 
                     //3. menjalankan query
                     $tampil = mysqli_query($con,$qry);
@@ -90,10 +92,31 @@ include_once ("cek_login.php")
                   ?>
                   <tr>
                     <td><?php echo $nomor++ ?></td>
-                    <td><?php echo $data['no'] ?></td>
-                    <td><?php echo $data['kd_pendaftaran'] ?></td>
-                    <td><?php echo $data['nisn'] ?></td>
-                    <td>4</td>
+                    <td><?php echo $data['kode_kelas'] ?></td>
+                    <td><?php echo $data['nip'] ?></td>
+                    <td><?php echo $data['nis'] ?></td>
+                    <td>
+                      <a href="edit_k.php?id=<?php echo $data['id'] ?>" class="btn btn-outline-secondary"><i class="fa-solid fa-pencil"></i></a>
+                      <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#hapus<?php echo $data['id'] ?>"><i class="fa fa-trash"></i></button>
+                      <!-- Modal -->
+                      <div class="modal fade" id="hapus<?php echo $data['id'] ?>" tabindex="-1" aria-labelledby="hapus<?php echo $data['id'] ?>" aria-hidden="true">
+                      <div class="modal-dialog">
+                      <div class="modal-content">
+                      <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel"><b>Warning</b><i class="fa-solid fa-circle-exclamation"></i></h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        Apakah Kamu Yakin Ingin Menghapus Data Kelas Dengan Kode <b><?php echo $data['kode_kelas'] ?> </b>?
+                      </div>
+                      <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+                      <a href="proses_hk.php?id=<?php echo $data['id'] ?>" class="btn btn-primary">Ya</a>
+                      </div>
+                      </div>
+                      </div>
+                      </div>
+                    </td>
                   </tr>
                   <?php
                   }
@@ -101,7 +124,7 @@ include_once ("cek_login.php")
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th>Id</th>
+                    <th>nomor</th>
                     <th>Kode Kelas</th>
                     <th>Nip</th>
                     <th>Nis</th>
@@ -139,6 +162,7 @@ include_once ("cek_login.php")
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- DataTables  & Plugins -->
 <script src="plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -152,9 +176,11 @@ include_once ("cek_login.php")
 <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- bootsrap JS -->
+<script scr="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
-!-- Page specific script -->
+<!-- Page specific script -->
 <script>
   $(function () {
     $("#example1").DataTable({
@@ -174,5 +200,7 @@ include_once ("cek_login.php")
 </script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/all.js"></script>
 </body>
 </html>

@@ -37,9 +37,7 @@ include_once ("cek_login.php")
     form pendaftaran
   </div>
   <div class="card-body">
-        <form action="proses_form.php" method="POST" >
-        
-       
+        <form action="proses_ts.php" method="POST" >
         <div class="mb-3">
             <label for="kd_pendaftaran" class="form-label">Kode Pendaftaran</label>       
             <input type="kd_pendaftaran" name="kd_pendaftaran" class="form-control" id="kd_pendaftaran" aria-describedby="kd_pendaftaran">
